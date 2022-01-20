@@ -8,11 +8,11 @@
         <hr>
         번호 제목 작성일
         <hr>
-        {% if post_list %}
+        {#% if post_list %#}
             {% for p in post_list %}
                 <a href="/crud/{{ p.id }}/"> {{ p.post_title }} </a><br>
             {% endfor %}
-        {% endif %}
+        {#% endif %#}
         <hr>
         <a href="index_create.html"><input type="button" value="글 작성"></a>
     </body>

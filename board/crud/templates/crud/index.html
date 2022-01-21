@@ -10,10 +10,14 @@
         <hr>
         {#% if post_list %#}
             {% for p in post_list %}
-                <a href="/crud/{{ p.id }}/"> {{ p.post_title }} </a><br>
+                {{ forloop.counter }} 
+                {% comment %} for 태그가 반복한 횟수 {% endcomment %}
+                <a href="{% url 'crud:detail' p.id %}"> {{ p.post_title }} </a>
+                {% comment %} 주소 하드코딩 방식 : <a href="/crud/{{ p.id }}/"> {{ p.post_title }} </a><br> {% endcomment %}
+                {{ p.created_at }}<br>
             {% endfor %}
         {#% endif %#}
         <hr>
-        <a href="index_create.html"><input type="button" value="글 작성"></a>
+        <a href="/crud/write/"><input type="button" value="글 작성"></a>
     </body>
 </html> 

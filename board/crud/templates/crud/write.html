@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <head>
+        <title>게시판 연습</title>
+    </head>
+    <body>
+        <h1>게시물 작성</h1>
+        <form action="{% url 'crud:detail' post.id %}" method="post">
+        {% csrf_token %}
+            <h3>제목</h3>
+            <input type="text" name="title">
+            <h3>글 내용</h3>
+            <textarea></textarea>
+            <br>
+            <input type="submit" value="작성">
+            <a href="index.html"><input type="button" value="나가기"></a>
+        </form>
+    </body>
+</html>

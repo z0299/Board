@@ -11,6 +11,7 @@
         <h2> 글 내용 </h2>
         {{ post.post_content }}
         <hr>
-        <a href="index_create.html"><input type="button" value="돌아가기"></a>
+        {% comment %} <a href={% url 'crud:update' %}><input type="button" value="게시물 수정"></a> {% endcomment %}
+        <a href={% url 'crud:index' %}><input type="button" value="돌아가기"></a>
     </body>
 </html> 

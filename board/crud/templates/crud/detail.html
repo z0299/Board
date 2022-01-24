@@ -12,6 +12,7 @@
         {{ post.post_content }}
         <hr>
         {% comment %} <a href={% url 'crud:update' %}><input type="button" value="게시물 수정"></a> {% endcomment %}
+        <a href={% url 'crud:update' post.id %}><input type="button" value="수정하기"></a>
         <a href={% url 'crud:index' %}><input type="button" value="돌아가기"></a>
     </body>
 </html> 

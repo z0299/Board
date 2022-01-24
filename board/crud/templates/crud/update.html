@@ -5,13 +5,14 @@
     </head>
     <body>
         <h1>게시물 수정</h1>
-        <form>
+        <form method="post">
+        {% csrf_token %}
             <h3>제목 : {{post.post_title}} </h3>
             <h3>글 내용</h3>
-            <textarea></textarea>
+            <textarea name="content" cols="40" rows="8"> {{ post.post_content }} </textarea>
             <br>
             <input type="submit" value="작성">
-            <a href="index.html"><input type="button" value="나가기"></a>
+            <a href={% url 'crud:index' %}><input type="button" value="돌아가기"></a>
         </form>
     </body>
 </html>

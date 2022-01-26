@@ -6,6 +6,8 @@
     <body>
         <h1>게시물 작성</h1>
         {% comment %} <form action="{% url 'crud:detail' post.id %}" method="post"> {% endcomment %}
+        {% comment %} {% if error_message %} <p>{{ error_message }}</p> {% endif %} {% endcomment %}
+
         <form method="post">
         {% csrf_token %}
             <h3>제목</h3>
@@ -14,8 +16,9 @@
             <textarea name="content" cols="40" rows="8"></textarea>
             <br>
             <input type="submit" value="작성">
-            <a href="index.html"><input type="button" value="나가기"></a>
+            <a href={% url 'crud:index' %}><input type="button" value="나가기"></a>
         </form>
+
         <h2>{{ post }}</h2>
     </body>
 </html>

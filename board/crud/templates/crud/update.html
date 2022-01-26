@@ -12,7 +12,7 @@
             <textarea name="content" cols="40" rows="8"> {{ post.post_content }} </textarea>
             <br>
             <input type="submit" value="작성">
-            <a href={% url 'crud:index' %}><input type="button" value="돌아가기"></a>
+            <a href={% url 'crud:detail' post.id %}><input type="button" value="돌아가기"></a>
         </form>
     </body>
 </html>

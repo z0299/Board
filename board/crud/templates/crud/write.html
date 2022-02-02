@@ -5,7 +5,7 @@
     </head>
     <body>
         <h1>게시물 작성</h1>
-        {% comment %} <form action="{% url 'crud:detail' post.id %}" method="post"> {% endcomment %}
+        {% comment %} <form action="{% url 'board:detail' post.id %}" method="post"> {% endcomment %}
         {% comment %} {% if error_message %} <p>{{ error_message }}</p> {% endif %} {% endcomment %}
 
         <form method="post">

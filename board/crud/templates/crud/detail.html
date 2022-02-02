@@ -11,7 +11,7 @@
         <h2> 글 내용 </h2>
         {{ post.post_content }}
         <hr>
-        {% comment %} <a href={% url 'crud:update' %}><input type="button" value="게시물 수정"></a> {% endcomment %}
+        {% comment %} <a href={% url 'board:update' %}><input type="button" value="게시물 수정"></a> {% endcomment %}
         <a href={% url 'crud:update' post.id %}><input type="button" value="수정하기"></a>
         <form method="post">{% csrf_token %}<input type="submit" value="삭제하기"></form>
         <a href={% url 'crud:index' %}><input type="button" value="돌아가기"></a>

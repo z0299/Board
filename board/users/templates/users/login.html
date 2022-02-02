@@ -1,0 +1,31 @@
+<!-- users>login.html -->
+
+{% block content %}
+
+<h1>로그인</h1>
+<hr>
+<form method="post">
+    {% csrf_token %}
+    {% include 'users/form_errors.html' %}
+    <div>
+        <h2>아이디</h2>
+        <input type="text" name="username" id="username">
+    </div>
+    <div>
+        <h2>비밀번호</h2>
+        <input type="text" name="password" id="password">
+    </div><br>
+    <button type="submit">로그인</button>
+    <a href={% url 'users:signup' %}><input type="button" value="회원가입"></a>
+</form>
+<hr>
+{% endblock %}
+
+{% comment %} <!-- _navbar.html -->
+
+{% if user.is_authenticated %} 
+<a href="{% url 'users:logout' %}">{{ user.username }}님 로그아웃</a>
+<span>||</span>
+{% else %}
+<a href="{% url 'users:login' %}">로그인</a>
+{% endif %} {% endcomment %}

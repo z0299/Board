@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'crud.apps.CrudConfig',
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -122,3 +123,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#로그인 성공 시 자동으로 이동할 URL
+LOGIN_REDIRECT_URL = '/crud'
+
+#로그아웃 성공 시 자동으로 이동할 URL
+LOGOUT_REDIRECT_URL = '/crud'

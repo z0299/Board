@@ -6,9 +6,9 @@
 
 <!-- _navbar.html -->
 <nav>
-    <a href="/crud/">게시판</a>
     {% if user.is_authenticated %}
-    {{ user.username }}
+    {{ user.username }}님 반갑습니다!<br>
+    <a href="/crud/">게시판</a>
     <a href="{% url 'users:logout' %}">로그아웃</a>
     {% else %}
     <a href="{% url 'users:login' %}">로그인</a>

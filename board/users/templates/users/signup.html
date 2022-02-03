@@ -4,7 +4,7 @@
 
 <h1>회원가입</h1>
 <hr>
-<form method="post">
+<form method="POST">
     {% csrf_token %}
     <div>
         <h2>아이디</h2>
@@ -12,7 +12,15 @@
     </div>
     <div>
         <h2>비밀번호</h2>
-        <input type="text" name="password" id="password">
+        <input type="text" name="password1" id="password1">
+    </div>
+    <div>
+        <h2>비밀번호 확인</h2>
+        <input type="text" name="password2" id="password2">
+    </div>
+    <div>
+        <h2>이메일</h2>
+        <input type="text" name="email" id="email">
     </div><br>
     <button type="submit">회원가입</button>
 </form>

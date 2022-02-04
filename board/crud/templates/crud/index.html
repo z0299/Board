@@ -1,9 +1,14 @@
+<!-- crud>index.html -->
 <!doctype html>
 <html>
     <head>
+        {% extends "base.html" %}
         <title>게시판 연습</title>
+        {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'crud/style.css' %}"> {% endcomment %}
     </head>
     <body>
+        {% block content %}
+
         <h1>게시판</h1>
         <table>
         <hr>
@@ -24,5 +29,7 @@
         </table>
         <hr>
         <a href={% url 'crud:write' %}><input type="button" value="글 작성"></a>
+
+        {% endblock content %}
     </body>
 </html> 

@@ -1,19 +1,14 @@
 <!-- board>index.html -->
+<!doctype html>
+<html>
+    <head>
+        {% extends "base.html" %}
+    </head>
+    <body>
+        {% block content %}
 
-{% block content %}
+        <h1>게시판 test</h1>
 
-<h1>게시판 test</h1>
-
-<!-- _navbar.html -->
-<nav>
-    {% if user.is_authenticated %}
-    {{ user.username }}님 반갑습니다!<br>
-    <a href="/crud/">게시판</a>
-    <a href="{% url 'users:logout' %}">로그아웃</a>
-    {% else %}
-    <a href="{% url 'users:login' %}">로그인</a>
-    <a href="{% url 'users:signup' %}">회원가입</a>
-    {% endif %}
-</nav>
-
-{% endblock %}
+        {% endblock content %}
+    </body>
+</html>

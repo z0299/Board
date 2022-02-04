@@ -1,9 +1,13 @@
+<!-- crud>detail.html -->
 <!doctype html>
 <html>
     <head>
+        {% extends "base.html" %}
         <title>게시판 연습</title>
     </head>
     <body>
+        {% block content %}
+
         {#<h1>게시글</h1>#}
         <hr>
         <h1> 제목 : {{ post.post_title }} </h1>
@@ -15,5 +19,7 @@
         <a href={% url 'crud:update' post.id %}><input type="button" value="수정하기"></a>
         <form method="post">{% csrf_token %}<input type="submit" value="삭제하기"></form>
         <a href={% url 'crud:index' %}><input type="button" value="돌아가기"></a>
+        
+        {% endblock content %}
     </body>
 </html> 

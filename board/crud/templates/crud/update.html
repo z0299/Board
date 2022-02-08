@@ -8,15 +8,16 @@
     <body>
         {% block content %}
 
-        <h1>게시물 수정</h1>
         <form method="post">
         {% csrf_token %}
-            <h3>제목 : {{post.post_title}} </h3>
-            <h3>글 내용</h3>
-            <textarea name="content" cols="40" rows="8"> {{ post.post_content }} </textarea>
+            <h3>{{post.post_title}} </h3>
+            <h5>내용 수정</h5>
+            <textarea class="form-control rounded-0" name="content" rows="10"> {{ post.post_content }} </textarea>
             <br>
-            <input type="submit" value="작성">
-            <a href={% url 'crud:detail' post.id %}><input type="button" value="돌아가기"></a>
+            <div>
+                <input class="btn btn-outline-primary" type="submit" value="작성">
+                <button class="btn btn-outline-primary" type="button" onclick="location.href='{% url 'crud:detail' post.id %}';">돌아가기</button>
+            </div>
         </form>
         
         {% endblock content %}

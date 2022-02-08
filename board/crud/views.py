@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .models import Post
 from django.contrib import messages
+from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
 # 함수형 view 대신 클래스형 view (=generic view)를 사용하면 코드가 더 간결해짐
@@ -14,7 +15,10 @@ from django.contrib.auth.decorators import login_required
 # 로그인된 사용자만 해당 뷰를 볼 수 있도록 한다
 def index(request):
     post_list = Post.objects.all()
-    context = {'post_list' : post_list,}
+    paginator = Paginator(post_list, 10)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    context = {'post_list' : post_list, 'posts':posts}
     #return HttpResponse("Hello, world. You're at the crud index.")
     return render(request, 'crud/index.html', context)
 
@@ -45,6 +49,8 @@ def update(request, post_id):
 
 def detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
+    post.post_views += 1
+    post.save()
     if request.method == 'POST':
         post.delete()
         return redirect('crud:index')

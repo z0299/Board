@@ -8,28 +8,89 @@
     </head>
     <body>
         {% block content %}
-
-        <h1>게시판</h1>
-        <table>
-        <hr>
-        <th width="100">번호</th>
-        <th width="200" align="left">제목</th>
-        <th width="200">작성일</th>
-        {#% if post_list %#}
-            {% for p in post_list %}
-            <tr>
-                <td align="center">{{ forloop.counter }}</td>
-                {% comment %} for 태그가 반복한 횟수 {% endcomment %}
-                <td><a href="{% url 'crud:detail' p.id %}"> {{ p.post_title }} </a></td>
-                {% comment %} 주소 하드코딩 방식 : <a href="/crud/{{ p.id }}/"> {{ p.post_title }} </a><br> {% endcomment %}
-                <td>{{ p.created_at }}</td>
-            </tr>
-            {% endfor %}
-        {#% endif %#}
+        <h3>게시판</h3><br>
+        
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th width="70">번호</th>
+                    <th width="300">제목</th>
+                    <th width="200">작성일</th>
+                    <th width="70">조회수</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for p in posts %}
+                <tr>
+                    <td >{{ forloop.counter }}</td>
+                    {% comment %} for 태그가 반복한 횟수    {% endcomment %}                         
+                    <td><a href="{% url 'crud:detail' p.id %}"> {{ p.post_title }} </a></td>
+                    {% comment %} 주소 하드코딩 방식 : <a href="/crud/{{ p.id }}/"> {{ p.post_title }} </a><br> {% endcomment %}
+                    <td>{{ p.created_at }}</td>
+                    <td>{{ p.post_views }}</td>
+                </tr>
+                {% endfor %} 
+                
+            </tbody>
         </table>
         <hr>
-        <a href={% url 'crud:write' %}><input type="button" value="글 작성"></a>
+    
+        <!-- pagination -->
+        <div class="text-center">
+            <ul class="pagination justify-content-center">
+                <!-- 이전 페이지 -->
+                {% if posts.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?&page={{ posts.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#" aria-label="Precious">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                {% endif %}
+                
+                <!-- 페이지 리스트 -->
+                {% for page_number in posts.paginator.page_range %}
+                {% if page_number == posts.number %}
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="?&page={{ page_number }}">{{ page_number }}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?&page={{ page_number }}">{{ page_number }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
 
+                <!-- 다음 페이지 -->
+                {% if posts.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?&page={{ posts.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!-- pagination end -->
+        <div class="float-right">
+            <a href={% url 'crud:write' %}><input class="btn btn-outline-primary pull-right" type="button" value="글 작성"></a>
+        </div>
         {% endblock content %}
     </body>
 </html> 

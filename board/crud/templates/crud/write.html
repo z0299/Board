@@ -8,19 +8,17 @@
     <body>
         {% block content %}
 
-        <h1>게시물 작성</h1>
-        {% comment %} <form action="{% url 'board:detail' post.id %}" method="post"> {% endcomment %}
-        {% comment %} {% if error_message %} <p>{{ error_message }}</p> {% endif %} {% endcomment %}
-
         <form method="post">
         {% csrf_token %}
-            <h3>제목</h3>
-            <input type="text" name="title">
-            <h3>글 내용</h3>
-            <textarea name="content" cols="40" rows="8"></textarea>
+            <h4>제목</h4>
+            <input class="form-control rounded-0" type="text" name="title"><br>
+            <h4>내용</h4>
+            <textarea class="form-control rounded-0" name="content" cols="40" rows="8"></textarea>
             <br>
-            <input type="submit" value="작성">
-            <a href={% url 'crud:index' %}><input type="button" value="나가기"></a>
+            <div class="float-right">
+                <input class="btn btn-outline-primary" type="submit" value="작성">
+                <a href={% url 'crud:index' %}><input class="btn btn-outline-primary" type="button" value="목록"></a>
+            </div>
         </form>
 
         <h2>{{ post }}</h2>

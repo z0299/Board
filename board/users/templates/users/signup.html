@@ -7,27 +7,29 @@
     <body>
         {% block content %}
 
-        <h1>회원가입</h1>
-        <hr>
-        <form method="POST">
+        <h3 style="text-align:center">회원가입</h3>
+        <hr><br>
+        <form method="post">
             {% csrf_token %}
             <div>
-                <h2>아이디</h2>
-                <input type="text" name="username" id="username">
-            </div>
-            <div>
-                <h2>비밀번호</h2>
-                <input type="password" name="password1" id="password1">
-            </div>
-            <div>
-                <h2>비밀번호 확인</h2>
-                <input type="password" name="password2" id="password2">
-            </div>
-            <div>
-                <h2>이메일</h2>
-                <input type="text" name="email" id="email">
+                <h5 style="text-align:center">아이디</h5>
+                <input style="margin: 0 auto; width: 300px;" type="text" class="form-control" name="username" id="username">
             </div><br>
-            <button type="submit">회원가입</button>
+            <div>
+                <h5 style="text-align:center">비밀번호</h5>
+                <input style="margin: 0 auto; width: 300px;" type="password" class="form-control" name="password1" id="password1">
+            </div><br>
+            <div>
+                <h5 style="text-align:center">비밀번호 확인</h5>
+                <input style="margin: 0 auto; width: 300px;" type="password" class="form-control" name="password2" id="password2">
+            </div><br>
+            <div>
+                <h5 style="text-align:center">이메일</h5>
+                <input style="margin: 0 auto; width: 300px;" type="text" class="form-control" name="email" id="email">
+            </div><br>
+            <div style="display:flex; justify-content:center;">
+                <button class="btn btn-outline-primary" type="submit">회원가입</button>
+            </div><br>
         </form>
         <hr>
 

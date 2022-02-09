@@ -6,24 +6,25 @@
     </head>
     <body>
         {% block content %}
-
-        <h1>로그인</h1>
-        <hr>
+        <h3 style="text-align:center">로그인</h3>
+        <hr><br>
         <form method="post">
             {% csrf_token %}
             {% include 'users/form_errors.html' %}
             <div>
-                <h2>아이디</h2>
-                <input type="text" name="username" id="username">
-            </div>
-            <div>
-                <h2>비밀번호</h2>
-                <input type="password" name="password" id="password">
+                <h5 style="text-align:center">아이디</h5>
+                <input style="margin: 0 auto; width: 300px;" type="text" class="form-control" name="username" id="username">
             </div><br>
-            <button type="submit">로그인</button>
-            <a href={% url 'users:signup' %}><input type="button" value="회원가입"></a>
+            <div>
+                <h5 style="text-align:center">비밀번호</h5>
+                <input style="margin: 0 auto; width: 300px;" type="password" class="form-control" name="password" id="password">
+            </div><br>
+            <div style="display:flex; justify-content:center;">
+                <button class="btn btn-outline-primary" type="submit">로그인</button> &nbsp;&nbsp;
+                <a href={% url 'users:signup' %}><input class="btn btn-outline-primary" type="button" value="회원가입"></a>
+            </div>
         </form>
-        <hr>
+        <br><hr>
 
         {% endblock %}
     </body>

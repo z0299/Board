@@ -13,7 +13,9 @@
             <nav class="navbar navbar-light bg-light">
                 <div class="container-fluid">
                     <span class="navbar-brand mb-0 h1">JiYoung</span>
+                    {% if user.is_authenticated %}
                     <label class="nav-link active">{{ user.username }}님 반갑습니다!</label>
+                    {% endif %}
                 </div>
             </nav>
             <nav class="nav">

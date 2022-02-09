@@ -14,7 +14,10 @@
         {% comment %} <a href={% url 'board:update' %}><input type="button" value="게시물 수정"></a> {% endcomment %}
         <div class="float-right">
             <button class="btn btn-outline-primary" type="button" onclick="location.href='{% url "crud:update" post.id %}';">수정</button>
-            <form style="display:inline;" method="post">{% csrf_token %}<button class="btn btn-outline-primary" type="submit"/>삭제</button></form>
+            <form style="display:inline;" method="post" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+                {% csrf_token %}
+                <button class="btn btn-outline-primary" type="submit">삭제</button>
+            </form>
             <button class="btn btn-outline-primary" type="button" onclick="location.href='{% url "crud:index"%}';">목록</button>
         </div>
         {% endblock content %}
